@@ -1,0 +1,240 @@
+Start your lab and practice
+
+cd devopslab
+vagrant status
+vagrant up node1
+vagrant status (Ensure node1 is running)
+vagrant ssh node1
+
+Stop your lab and exit
+
+exit
+vagrant halt node1
+
+
+File System in Linux
+===============
+
+pwd - command to see the path of present working directory
+
+/ - root partition
+
+/root - root user’s home directory
+
+/home - home directory for any other user other than root
+
+/etc - contains all configuration files
+
+/boot - contains all files related	to booting/boot loader of your system
+
+/dev -contains all the files related to attached devices
+
+/opt - contains all third party softwares
+
+/var - contains all dynamic files and logs
+
+/tmp - contains all temporary files
+
+/bin - contains all commands for non privileged user
+
+/sbin - contains all commands for privileged user
+
+/proc - contains all process information
+
+/sys - contains all system files
+
+
+Booting Sequence
+==============
+
+BIOS
+MBR
+GRUB
+Kernel
+Init
+Runlevel
+
+Runlevels
+=======
+
+0 - shutdown
+
+1- single user mode
+
+2 - multi user mode without networking
+
+3 - multi user with networking
+
+4 - undefined
+
+5 - full graphical mode
+
+6 - reboot
+
+
+Filesystem Path
+============
+
+Absolute path - start with a /
+
+Relative Path - starts with ..
+
+Creating and Editing files in linux
+=========================
+
+Touch - to create a blank file
+
+I - insert text
+
+Arrow keys - navigator
+
+W - save
+
+Q - quit
+
+Wq - save and quit
+
+Q! - quit with out saving
+
+Gg - takes to being of file
+
+G (shift g) - takes you bottom of the file
+
+N gg or :n - takes you to a particular line number, where n is the number
+
+U - undo
+
+Ctrl r - redo
+
+A - append
+
+/string - searches the given string
+
+%s/searchstring/replacestring/g - replaces the search string with replace string (where g stands for global)
+
+How to replace the given string with in a specified line numbers
+M,ns/searchstring/replacestring/g (where m and n are the ranges)
+
+
+File Permissions
+============
+
+R - 4
+
+W - 2
+
+X - 1
+
+      R w x r w x r w x
+- - - - - - - - - - - 
+
+File Owner
+Group owner
+Other (rest of the world/Public)
+
+The first - represents a file type
+
+- regular file
+B - block file
+C - character file
+D - directory
+L - linked file (can be created using ln command)
+P - piped file
+S - socket file
+
+Redirectors
+========
+
+| - pipe
+
+> - redirects results to the given file
+
+>> - appends results to the given file
+
+2> - redirects error messages to a file
+
+&> - redirects everything to a file
+
+
+Users, Groups permissions and ownership
+================================
+
+2 types of users
+	- privileged user/ super user/ root
+	- unprivileged users/ regular users
+
+Useradd <username>
+
+Passwd <username>
+
+Groupadd <groupname>
+
+/etc/passwd
+/etc/shadow
+/etc/group
+
+Chmod - change permissions of a file
+
+
+Linux Processes and Managing Processes
+================================
+
+A process is a set of instructions loaded into memory.
+
+	- numeric process ID (PID)
+	- who is running the process
+	- group id associated
+
+Ps - lists all process ids along with other information
+
+Ps -ef
+Ps -aux
+
+All the process can be associated with a signal
+
+15 - terminate cleanly
+9 - kill or terminate immediately	
+1 - reread configuration files (HUP)
+
+Kill -9 <pid>
+
+Killall -9 <processname>
+
+Pkill -9 pattern
+
+W - displays a quick summary of system usage
+Top - displays a detailed realtime information about running processes.
+
+S --> Interruptible sleep(S) process which is waiting for an event to complete.
+Ss --> A session leader(s) process in Interruptible sleep(S).
+SN --> A low priority(N) process which is nice to others is in interruptible sleep(S).
+S< s --> "<" indicates a high priority process and the process is a session leader(s) in interruptible sleep(S).
+S< sl --> A multhi-threaded(l) high priority(<) session leader(s) process in interruptible sleep(S).
+S< --> A high priroty(<) process in interruptible sleep(S).
+SNl --> A low priority(N) multi-threaded(l) process in interruptible sleep(S) state.
+SNs --> A low priority(N) session leader(s) process in interruptible sleep(S).
+SN+ --> A low priority(N) interruptible sleep(S) process running in foreground(+).
+R+ --> A foreground(+) running(R) process.
+T - stopped process
+Z - Zombie
+I - Idle process
+
+
+& - sends a job to background
+
+Fg <jobid> - brings a job to foreground
+
+Jobs - lists all the background jobs
+
+Services and Daemons
+=================
+
+Systemctl [status/start/stop/restart] <servicename>
+
+Status of a service: loaded/active(running)/active(exited)/active(waiting)/inactive
+
+Enabled/disabled
+
+Systemctl list-units —type=service
+
+Chronyd - it is an application to schedule your jobs/tasks
