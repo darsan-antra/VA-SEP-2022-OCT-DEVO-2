@@ -238,3 +238,50 @@ Enabled/disabled
 Systemctl list-units —type=service
 
 Chronyd - it is an application to schedule your jobs/tasks
+
+Managing SSH 
+===========
+
+Service name of ssh: ssh.service
+
+Port number ssh: 22
+
+Configuration file for ssh: /etc/ssh/sshd_config
+
+Task1: Disable direct root login
+
+Edit /etc/ssh/sshd_config
+	vi /etc/ssh/sshd_config
+
+Find permitRotlogin and set it no
+	permitRootlogin no
+
+Save and exit the configuration file
+	esc :wq
+
+Restart ssh service
+	systemctl restart sshd
+
+Task2: create key based authentication from your local host to node1
+
+Create a key pair (private and public key)
+
+	ssh-keygen (keep pressing enter till it finishes)
+
+Copy public key to target host
+
+	ssh-copy-id -i <path of your public key> user@<ip/hostname>
+	ssh-copy-id -i /c/user/venka/.ssh/id_rsa.pub vagrant@192.168.2.30
+
+	ssh vagrant@192.168.2.30
+
+Task3: disable unprivileged user login
+
+Edit /etc/passwd
+	vi /etc/passwd
+
+Find the user name
+
+	/<username>
+
+Update /bin/bash to /bin/nologin
