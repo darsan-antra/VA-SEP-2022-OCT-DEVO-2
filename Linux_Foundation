@@ -285,3 +285,98 @@ Find the user name
 	/<username>
 
 Update /bin/bash to /bin/nologin
+
+Linux Networking basics
+===================
+
+Ping <ipaddress/hostname>
+
+Hostname
+
+Add a local reference	for a host address
+
+Vi /etc/hosts
+
+Ifconfig / IP address show- to display the the IP address
+
+File name - /etc/sysconfig/network-scripts/ifcfg-eth<n>
+
+BOOTPROT - dhcp/static/none
+
+DHCP is a protocol known as Dynamic Host Configuration Protocol, The Dynamic Host Configuration Protocol is a network management protocol used on Internet Protocol networks for automatically assigning IP addresses and other communication parameters to devices connected to the network using a client–server architecture.
+
+Read:
+https://www.redhat.com/sysadmin/7-great-network-commands
+https://www.redhat.com/sysadmin/sysadmin-essentials-networking-basics
+
+
+Log Management in Linux
+===================
+The log file is a file that records either events that occur in an operating system or other software runs. In here, the Linux servers have log files which keep messages about the server, including the kernel, services, and applications running on it. And the log files are located at the /var/log directory.
+
+Mainly there are four types of log files generated in a Linux based environment and they are:
+* Application Logs.
+* Event Logs.
+* Service Logs.
+* System Logs.
+
+/var/log/messages
+* This file contains the information of generic system activity.
+* This is the log file which stores informational and non-critical system messages.
+* This files stores mainly the non-kernel boot errors, application related service errors and the messages that are logged during system startup.
+* If something goes wrong, then one should have to check this file first! Like you are facing some issues with the sound card. To check if something went wrong during the system startup process, you can have a look at the messages stored in this log file.
+ 
+/var/log/secure
+* This file contains the information about all user authentication details.
+* This log file is mainly used to get the usage of the authorization system.
+* This file stores all security related messages including the authentication failure.
+* This file saves the sudo logins, SSH logins and other errors logged by system security service daemon.
+* This file is very useful to detect the hacking attempts.
+* Also, this file stores the information about successful logins and can be used to verify the activities of valid users.
+
+/var/log/cron
+* This file contains the information of all cron jobs.
+* If any of your cron have issues, then related entry you can find from this file.
+* When a cron job runs, this log file records all relevant information including successful execution and error messages in case of failures.
+
+/var/log/mail.log
+* This file contains the information of all mail server related details.
+* This file saves the entries or information about postfix, smtp, MailScanner, SpamAssassin or any other email related services running on the mail server.
+* One can track all the emails that were sent or received during a particular period.
+* One can check failed mail delivery issues from the entries of this file.
+* Details regarding any possible spamming attempts blocked by the mail server can be obtained from this file.
+* One can detect the origin of an incoming email by detailed checking the entries of this file.
+
+/var/log/httpd/
+* This directory contains the information about the logs recorded by the Apache server.
+* This directory has two files – error_log and access_log which saves the information from Apache server.
+* The error_log contains messages related to httpd errors such as memory issues and other system related errors.
+* If something goes wrong with the Apache web server, check this log for diagnostic information.
+
+cd /var/log
+cat messages
+tail -10 messages
+ head -10 messages
+ cat messages grep 'httpd'
+ cat messages grep httpd
+ tail -f messages
+ ll
+ tail -f secure
+ ll
+ cd /boot
+ ll
+ ll anaconda
+ cd /var
+ cd /var/log
+  ll anaconda
+  ll
+  cd httpd
+   ll
+  systemctl start httpd
+   ll
+   tail -f access_log
+   ll
+   tail -f log
+   tail -f error_log
+
+Additional tools to lear for Log management: log stash and splunk
