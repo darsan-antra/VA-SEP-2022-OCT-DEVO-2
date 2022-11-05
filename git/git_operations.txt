@@ -1,0 +1,49 @@
+102  git branch
+  103  git branch devlopment
+  104  git branch
+  105  git branch delt
+  106  git branch
+  107  git checkout delt
+  108  git branch
+  109  git checkout main
+  110  git branch
+  111  git branch -d delt
+  112  git branch
+  113  git checkout -b qa
+  114  git branch
+  115  ll
+  116  cat file1.txt
+  117  vim file1.txt
+  118  git add file1.txt
+  119  git commit -m "added a new line"
+  120  git push origin qa
+  121  cat file1.txt
+  122  git show remote url
+  123  git remote -b
+  124  clear
+  125  git remote -v
+  126  git config --list
+Venkat Chowdary to Everyone (12:31 PM)
+127  clear
+  128  git brand
+  129  git checkout
+  130  git checkout main
+  131  git branch
+  132  git merge qa
+  133  git branch
+  134  cat file1.txt
+  135  git push origin main
+  136  git checkout devlopment
+  137  cat file1.txt
+  138  git pull origin main
+  139  vim file1.txt
+  140  git add file1.txt
+  141  git push origin main
+  142  git commit -m "This line has been added to the devlopment branch"
+  143  git push origin main
+  144  git push origin devlopment
+  145  clear
+  146  vim file1.txt
+  147  git add file1.txt
+  148  git commit -m "we are adding another new line"
+  149  git push origin devlopment
