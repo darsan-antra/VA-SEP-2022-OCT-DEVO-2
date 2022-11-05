@@ -1,0 +1,382 @@
+Start your lab and practice
+
+cd devopslab
+vagrant status
+vagrant up node1
+vagrant status (Ensure node1 is running)
+vagrant ssh node1
+
+Stop your lab and exit
+
+exit
+vagrant halt node1
+
+
+File System in Linux
+===============
+
+pwd - command to see the path of present working directory
+
+/ - root partition
+
+/root - root user’s home directory
+
+/home - home directory for any other user other than root
+
+/etc - contains all configuration files
+
+/boot - contains all files related	to booting/boot loader of your system
+
+/dev -contains all the files related to attached devices
+
+/opt - contains all third party softwares
+
+/var - contains all dynamic files and logs
+
+/tmp - contains all temporary files
+
+/bin - contains all commands for non privileged user
+
+/sbin - contains all commands for privileged user
+
+/proc - contains all process information
+
+/sys - contains all system files
+
+
+Booting Sequence
+==============
+
+BIOS
+MBR
+GRUB
+Kernel
+Init
+Runlevel
+
+Runlevels
+=======
+
+0 - shutdown
+
+1- single user mode
+
+2 - multi user mode without networking
+
+3 - multi user with networking
+
+4 - undefined
+
+5 - full graphical mode
+
+6 - reboot
+
+
+Filesystem Path
+============
+
+Absolute path - start with a /
+
+Relative Path - starts with ..
+
+Creating and Editing files in linux
+=========================
+
+Touch - to create a blank file
+
+I - insert text
+
+Arrow keys - navigator
+
+W - save
+
+Q - quit
+
+Wq - save and quit
+
+Q! - quit with out saving
+
+Gg - takes to being of file
+
+G (shift g) - takes you bottom of the file
+
+N gg or :n - takes you to a particular line number, where n is the number
+
+U - undo
+
+Ctrl r - redo
+
+A - append
+
+/string - searches the given string
+
+%s/searchstring/replacestring/g - replaces the search string with replace string (where g stands for global)
+
+How to replace the given string with in a specified line numbers
+M,ns/searchstring/replacestring/g (where m and n are the ranges)
+
+
+File Permissions
+============
+
+R - 4
+
+W - 2
+
+X - 1
+
+      R w x r w x r w x
+- - - - - - - - - - - 
+
+File Owner
+Group owner
+Other (rest of the world/Public)
+
+The first - represents a file type
+
+- regular file
+B - block file
+C - character file
+D - directory
+L - linked file (can be created using ln command)
+P - piped file
+S - socket file
+
+Redirectors
+========
+
+| - pipe
+
+> - redirects results to the given file
+
+>> - appends results to the given file
+
+2> - redirects error messages to a file
+
+&> - redirects everything to a file
+
+
+Users, Groups permissions and ownership
+================================
+
+2 types of users
+	- privileged user/ super user/ root
+	- unprivileged users/ regular users
+
+Useradd <username>
+
+Passwd <username>
+
+Groupadd <groupname>
+
+/etc/passwd
+/etc/shadow
+/etc/group
+
+Chmod - change permissions of a file
+
+
+Linux Processes and Managing Processes
+================================
+
+A process is a set of instructions loaded into memory.
+
+	- numeric process ID (PID)
+	- who is running the process
+	- group id associated
+
+Ps - lists all process ids along with other information
+
+Ps -ef
+Ps -aux
+
+All the process can be associated with a signal
+
+15 - terminate cleanly
+9 - kill or terminate immediately	
+1 - reread configuration files (HUP)
+
+Kill -9 <pid>
+
+Killall -9 <processname>
+
+Pkill -9 pattern
+
+W - displays a quick summary of system usage
+Top - displays a detailed realtime information about running processes.
+
+S --> Interruptible sleep(S) process which is waiting for an event to complete.
+Ss --> A session leader(s) process in Interruptible sleep(S).
+SN --> A low priority(N) process which is nice to others is in interruptible sleep(S).
+S< s --> "<" indicates a high priority process and the process is a session leader(s) in interruptible sleep(S).
+S< sl --> A multhi-threaded(l) high priority(<) session leader(s) process in interruptible sleep(S).
+S< --> A high priroty(<) process in interruptible sleep(S).
+SNl --> A low priority(N) multi-threaded(l) process in interruptible sleep(S) state.
+SNs --> A low priority(N) session leader(s) process in interruptible sleep(S).
+SN+ --> A low priority(N) interruptible sleep(S) process running in foreground(+).
+R+ --> A foreground(+) running(R) process.
+T - stopped process
+Z - Zombie
+I - Idle process
+
+
+& - sends a job to background
+
+Fg <jobid> - brings a job to foreground
+
+Jobs - lists all the background jobs
+
+Services and Daemons
+=================
+
+Systemctl [status/start/stop/restart] <servicename>
+
+Status of a service: loaded/active(running)/active(exited)/active(waiting)/inactive
+
+Enabled/disabled
+
+Systemctl list-units —type=service
+
+Chronyd - it is an application to schedule your jobs/tasks
+
+Managing SSH 
+===========
+
+Service name of ssh: ssh.service
+
+Port number ssh: 22
+
+Configuration file for ssh: /etc/ssh/sshd_config
+
+Task1: Disable direct root login
+
+Edit /etc/ssh/sshd_config
+	vi /etc/ssh/sshd_config
+
+Find permitRotlogin and set it no
+	permitRootlogin no
+
+Save and exit the configuration file
+	esc :wq
+
+Restart ssh service
+	systemctl restart sshd
+
+Task2: create key based authentication from your local host to node1
+
+Create a key pair (private and public key)
+
+	ssh-keygen (keep pressing enter till it finishes)
+
+Copy public key to target host
+
+	ssh-copy-id -i <path of your public key> user@<ip/hostname>
+	ssh-copy-id -i /c/user/venka/.ssh/id_rsa.pub vagrant@192.168.2.30
+
+	ssh vagrant@192.168.2.30
+
+Task3: disable unprivileged user login
+
+Edit /etc/passwd
+	vi /etc/passwd
+
+Find the user name
+
+	/<username>
+
+Update /bin/bash to /bin/nologin
+
+Linux Networking basics
+===================
+
+Ping <ipaddress/hostname>
+
+Hostname
+
+Add a local reference	for a host address
+
+Vi /etc/hosts
+
+Ifconfig / IP address show- to display the the IP address
+
+File name - /etc/sysconfig/network-scripts/ifcfg-eth<n>
+
+BOOTPROT - dhcp/static/none
+
+DHCP is a protocol known as Dynamic Host Configuration Protocol, The Dynamic Host Configuration Protocol is a network management protocol used on Internet Protocol networks for automatically assigning IP addresses and other communication parameters to devices connected to the network using a client–server architecture.
+
+Read:
+https://www.redhat.com/sysadmin/7-great-network-commands
+https://www.redhat.com/sysadmin/sysadmin-essentials-networking-basics
+
+
+Log Management in Linux
+===================
+The log file is a file that records either events that occur in an operating system or other software runs. In here, the Linux servers have log files which keep messages about the server, including the kernel, services, and applications running on it. And the log files are located at the /var/log directory.
+
+Mainly there are four types of log files generated in a Linux based environment and they are:
+* Application Logs.
+* Event Logs.
+* Service Logs.
+* System Logs.
+
+/var/log/messages
+* This file contains the information of generic system activity.
+* This is the log file which stores informational and non-critical system messages.
+* This files stores mainly the non-kernel boot errors, application related service errors and the messages that are logged during system startup.
+* If something goes wrong, then one should have to check this file first! Like you are facing some issues with the sound card. To check if something went wrong during the system startup process, you can have a look at the messages stored in this log file.
+ 
+/var/log/secure
+* This file contains the information about all user authentication details.
+* This log file is mainly used to get the usage of the authorization system.
+* This file stores all security related messages including the authentication failure.
+* This file saves the sudo logins, SSH logins and other errors logged by system security service daemon.
+* This file is very useful to detect the hacking attempts.
+* Also, this file stores the information about successful logins and can be used to verify the activities of valid users.
+
+/var/log/cron
+* This file contains the information of all cron jobs.
+* If any of your cron have issues, then related entry you can find from this file.
+* When a cron job runs, this log file records all relevant information including successful execution and error messages in case of failures.
+
+/var/log/mail.log
+* This file contains the information of all mail server related details.
+* This file saves the entries or information about postfix, smtp, MailScanner, SpamAssassin or any other email related services running on the mail server.
+* One can track all the emails that were sent or received during a particular period.
+* One can check failed mail delivery issues from the entries of this file.
+* Details regarding any possible spamming attempts blocked by the mail server can be obtained from this file.
+* One can detect the origin of an incoming email by detailed checking the entries of this file.
+
+/var/log/httpd/
+* This directory contains the information about the logs recorded by the Apache server.
+* This directory has two files – error_log and access_log which saves the information from Apache server.
+* The error_log contains messages related to httpd errors such as memory issues and other system related errors.
+* If something goes wrong with the Apache web server, check this log for diagnostic information.
+
+cd /var/log
+cat messages
+tail -10 messages
+ head -10 messages
+ cat messages grep 'httpd'
+ cat messages grep httpd
+ tail -f messages
+ ll
+ tail -f secure
+ ll
+ cd /boot
+ ll
+ ll anaconda
+ cd /var
+ cd /var/log
+  ll anaconda
+  ll
+  cd httpd
+   ll
+  systemctl start httpd
+   ll
+   tail -f access_log
+   ll
+   tail -f log
+   tail -f error_log
+
+Additional tools to lear for Log management: log stash and splunk
