@@ -1,0 +1,122 @@
+102  git branch
+  103  git branch devlopment
+  104  git branch
+  105  git branch delt
+  106  git branch
+  107  git checkout delt
+  108  git branch
+  109  git checkout main
+  110  git branch
+  111  git branch -d delt
+  112  git branch
+  113  git checkout -b qa
+  114  git branch
+  115  ll
+  116  cat file1.txt
+  117  vim file1.txt
+  118  git add file1.txt
+  119  git commit -m "added a new line"
+  120  git push origin qa
+  121  cat file1.txt
+  122  git show remote url
+  123  git remote -b
+  124  clear
+  125  git remote -v
+  126  git config --list
+Venkat Chowdary to Everyone (12:31 PM)
+127  clear
+  128  git brand
+  129  git checkout
+  130  git checkout main
+  131  git branch
+  132  git merge qa
+  133  git branch
+  134  cat file1.txt
+  135  git push origin main
+  136  git checkout devlopment
+  137  cat file1.txt
+  138  git pull origin main
+  139  vim file1.txt
+  140  git add file1.txt
+  141  git push origin main
+  142  git commit -m "This line has been added to the devlopment branch"
+  143  git push origin main
+  144  git push origin devlopment
+  145  clear
+  146  vim file1.txt
+  147  git add file1.txt
+  148  git commit -m "we are adding another new line"
+  149  git push origin devlopment
+
+Git conflict
+============
+
+git branch
+  661  git branch dev
+  662  git branch user1 user2
+  663  git branch user1
+  664  git branch user2
+  665  git branch
+  666  git checkout user1
+  667  vim chang.txt
+  668  git add .
+  669  git commit -m "first file in user1"
+  670  git push origin user1
+  671  git checkout dev
+  672  git merge user1
+  673  git push origin dev
+  674  git checkout user2
+  675  vim secondfile.txt
+  676  git add .
+  677  git commit -m "file made by user2"
+  678  git push origin user2
+  679  git checkout dev
+  680  git merge user2
+  681  git version
+  682  git push origin dev
+  683  checkout user1
+  684  git checkout user1
+  685  ll
+  686  vim chang.txt
+  687  git add .
+  688  git commit -m "new change file update"
+  689  git push origin user1
+  690  git checkout dev
+  691  git merge user1
+  692  git push origin dev
+  693  ll
+  694  git checkout user2
+  695  ll
+  696  cat secondfile.txt
+  697  git checkout user1
+  698  ll
+  699  vim secondfile.txt
+  700  git add .
+  701  git commit -m "conflicting file"
+  702  git checkout dev
+  703  git merge user1
+  704  cat secondfile.txt
+  705  git checkout -b fix
+  706  cat this is a different file by user1.
+  707  cat this is a different file by user1.
+  708  cat secondfile.txt
+  709  git log
+  710  vim secondfile.txt
+  711  git add .
+  712  git commit -m "fixed merge conflict"
+  713  git checkout dev
+  714  git log
+  715  cat secondfile.txt
+  716  git merge fix
+  717  git push origin dev
+  718  git checkout user1
+  719  cat secondfile.txt
+  720  git pull origin dev
+  721  git log
+  722  git reset --hard 1b26c79a8d5a3c38b623d39cd9a36bd6a1b7dbd7
+  723  ll
+  724  git pull origin dev
+  725  git status
+  726  git push origin user1
+  727  git branch -d branch
+  728  git branch -d fix
