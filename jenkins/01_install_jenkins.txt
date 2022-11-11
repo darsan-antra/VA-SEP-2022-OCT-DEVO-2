@@ -1,0 +1,19 @@
+# Install java-11-openjdk, epel and utilities
+
+yum install -y java-11-openjdk epel-release net-tools wget
+
+# Enable root login in ssh configuration
+
+sed -i "s/^PermitRootLogin no/PermitRootLogin yes/g" /etc/ssh/sshd_config
+sed -i "s/^PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
+service sshd restart
+
+# Install git
+
+yum install -y git
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo --no-check-certificate
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+sudo yum install jenkins -y
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
